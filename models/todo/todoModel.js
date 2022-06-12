@@ -1,8 +1,6 @@
-import mongoose from "mongoose"
+const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-export const studentSchema = new Schema({
+const TodoItemSchema = new mongoose.Schema({
     title: {
         type: String,
         required: "Enter title"
@@ -11,8 +9,13 @@ export const studentSchema = new Schema({
         type: String,
         required: "Enter content"
     },
+    priority: {
+        type: Number,
+        default: 1
+    },
     done: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     created_date: {
         type: Date,
@@ -23,3 +26,5 @@ export const studentSchema = new Schema({
         default: Date.now()
     }
 })
+
+module.exports = TodoItemSchema

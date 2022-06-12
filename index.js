@@ -1,19 +1,22 @@
+require('./db/db.connect')
+
 const express = require('express')
-// import { ... } from "./controllers/todo/todoController"
-const bodyParser = require('body-parser')
+const routes = require('./routes');
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const projName = "expressTODO"
 
-app.use(bodyParser.json())
+app.use('/', routes)
 
-// app.route("/todo").get(getAllTodos).post(addTodo)
-// app.route("/todo/:todoID").get(getTodo).put(updateTodo).delete(deleteTodo)
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use((err, req, res, next) => {
+  res.status(err.status || 400).json({
+    success: false,
+    message: err.message || 'An error occured.',
+    errors: err.error || [],
+  })
 })
+
 
 app.listen(port, () => {
   console.log(`${projName} is running on: http://localhost:${port}`)
