@@ -1,8 +1,8 @@
 module.exports = {
     name: 'expressTODO',
-    host: process.env.HOST_MONGODB || '127.0.0.1:27017',
+    host: 'mongodb+srv://todoUser1:lampka100@expresstodocluster.6k8bm.mongodb.net/?retryWrites=true&w=majority',
     opts: {
-      promiseLibrary: global.Promise,
+      // promiseLibrary: global.Promise,
       useNewUrlParser: true,
     },
 }
