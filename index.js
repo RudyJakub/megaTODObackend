@@ -1,12 +1,14 @@
 require('./db/db.connect')
 
 const express = require('express')
-const routes = require('./routes');
+const routes = require('./routes')
+const cors = require('cors')
 
 const app = express()
 const port = process.env.PORT || 3000
 const projName = "expressTODO"
 
+app.use(cors())
 app.use('/', routes)
 
 app.use((err, req, res, next) => {
