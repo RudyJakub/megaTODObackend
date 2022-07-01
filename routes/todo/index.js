@@ -63,7 +63,7 @@ const updateOne = (req, res) => {
         todo.title = req.body.title || todo.title
         todo.content = req.body.content || todo.content
         todo.priority = req.body.content || todo.priority
-        todo.done = req.body.done || todo.done
+        todo.done = (req.body.done === null) ? todo.done : req.body.done
         todo.updated_date = Date.now()
         todo.save()
         return res.status(200).send(todo)
